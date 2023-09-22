@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <script>
+        function importData() {
+            let input = document.createElement('input');
+            input.type = 'file';
+            
+            input.onchange = _ => {
+                        let files = Array.from(input.files);
+                    };
+            input.click();
+        }              
+        function Submit() {
+            let form = document.getElementById("main-form");
+            let filename = document.getElementById("file_name");
+            let ofd = document.getElementById("file_input");
+            if(filename.value != "" && ofd.value != "") {
+                if(filename.value.includes(" ")) {
+                    alert("Name can't contain spaces!");
+                } else {
+                    form.submit();
+                }
+                
+            } else {
+                alert("Fill in the forms please!");
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <form action="/" enctype="multipart/form-data" method="post" id="main-form">
+        <div class="form-group">
+          <input type="file" class="form-control-file" name="uploaded_file" id="file_input">
+          <input type="text" name="file_name" id="file_name">
+          <input type="button" value="Submit" onclick="Submit()">          
+        </div>
+      </form>
+</body>
+</html>
